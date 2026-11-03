@@ -1,0 +1,221 @@
+/* Site-specific rules from kaia.io: the <style> blocks in <head> and the custom-code embeds, in page order. */
+
+  ::selection {
+    background-color: #BFF009;
+    color: #000000;
+  }
+
+
+
+.truncate-text-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+.truncate-text-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+.truncate-text-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  padding-left: 20px !important;
+  padding-right: 44px; /* 20px gap + 12px icon + some buffer */
+}
+
+
+
+select.is-filled,
+input.is-filled,
+textarea.is-filled {
+  color: #ffffff !important;
+}
+
+
+ 
+  /* mobile-portrait */
+  @media (max-width: 479px){
+    .bg-video_green-social, .bg-video_green-social-mobile video{
+      object-position: 50% 100%;
+    }
+  }
+
+
+
+  /* default (desktop/tablet) */
+  .bg-video_hero video{
+    object-fit: cover;
+    object-position: 70% 50%;
+  }
+
+  /* mobile */
+  @media (max-width: 767px){
+    .bg-video_hero video{
+      object-position: 85% 50%;
+    }
+  }
+  
+  /* mobile-portrait */
+  @media (max-width: 479px){
+    .bg-video_hero video{
+      object-position: 85% 50%;
+    }
+  }
+
+
+ 
+  /* mobile-portrait */
+  @media (max-width: 479px){
+    .bg-video_green video{
+      object-position: 50% 100%;
+    }
+  }
+
+
+
+  .hero-banner_list {
+    display: flex !important;
+    overflow: visible !important;
+  }
+  .hero-banner_card {
+    flex-shrink: 0;
+    height: auto;
+    margin: 0 !important;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(2rem);
+    transition: opacity 0.7s ease-in-out, filter 0.7s ease-in-out, transform 0.7s ease-in-out;
+  }
+  .hero-banner_card.is-visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+  .bento-border {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(2rem);
+    transition: opacity 0.7s ease-in-out, filter 0.7s ease-in-out, transform 0.7s ease-in-out;
+  }
+  .bento-border.is-visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+  @media (min-width: 992px) {
+    .bento-border .blurred-color {
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: absolute;
+      pointer-events: none;
+    }
+    .bento-border:hover .blurred-color {
+      opacity: 1;
+    }
+  }
+
+
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .logos-row2 {
+    animation: scroll 30s linear infinite;
+  }
+  
+  .logos-container2:hover .logos-row2 {
+  	animation-play-state: paused;
+  }
+
+
+
+  .logos-container2{
+    -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 10%,
+      #000 80%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 10%,
+      #000 80%,
+      transparent 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+/* IX2 hover states that only change styles (Webflow "main" breakpoint = desktop). */
+@media (min-width: 992px) {
+  /* a-85 / a-86: external-link arrow on menu and footer links */
+  .dropdown-item_menu .external-link_icon,
+  .footer-link .external-link_icon {
+    opacity: 0;
+    translate: -4px 6px;
+    scale: 0.8;
+    transform-style: preserve-3d;
+    transition: opacity 0.2s, translate 0.1s, scale 0.5s;
+  }
+  .dropdown-item_menu:hover .external-link_icon,
+  .footer-link:hover .external-link_icon {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+    transition: opacity 0.1s, translate 0.1s, scale 0.5s;
+  }
+
+  /* a-103 / a-104: blog card arrow slides in and turns lime */
+  .blog-card .arrow-link.is-absolute {
+    opacity: 0;
+    transform: translate3d(-12px, 0, 0);
+    color: #fff;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .blog-card:hover .arrow-link.is-absolute {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    color: var(--_color---main--80);
+    transition: opacity 0.2s, transform 0.2s, color 0.5s;
+  }
+}
+
+/* The Kaia logo is inline SVG here (an <img> on kaia.io): give it Webflow's base img sizing so it lays out identically. */
+svg.kaia-logo-2 {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+}
